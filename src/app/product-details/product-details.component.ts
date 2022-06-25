@@ -12,8 +12,20 @@ import { CartService } from '../cart.service';
 export class ProductDetailsComponent implements OnInit {
   product: Product | undefined;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private cartService: CartService) {
     //activated route contiene informazioni sul route e i parametri
+  }
+
+  /*
+  *The addToCart() method does the following:
+  Takes the current product as an argument
+  Uses the CartService addToCart() method to add the product to the cart
+  Displays a message that you've added a product to the cart
+   */
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    window.alert('Your product has been added to the cart!');
   }
 
   ngOnInit(): void {
